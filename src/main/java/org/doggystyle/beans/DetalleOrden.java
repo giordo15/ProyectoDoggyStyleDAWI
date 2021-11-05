@@ -68,11 +68,4 @@ public class DetalleOrden {
 		return "DetalleOrden [id=" + id + ", nombre=" + nombre + ", cantidad=" + cantidad + ", precio=" + precio
 				+ ", total=" + total + "]";
 	}
-	
-	
-	
-	
-	
-	
-
 }

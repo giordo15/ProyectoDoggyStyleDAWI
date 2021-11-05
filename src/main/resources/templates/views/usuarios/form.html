@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- FORMULARIO USUARIO -->
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container col-lg-8">
+		<div class="card bg-ligth">
+			<div class="card-header bg-dark h3 mb-2 text-white text-center"
+				th:text="${titulo}"></div>
+			<div class="card-body">
+				<!-- FORMULARIO -->
+				<form th:action="@{/views/usuarios/guardar}" th:object=${usuario}
+					method="post">
+					<div class="form-group">
+						<input th:field="*{id}" id="id" type="hidden" class="form-control"
+							placeholder="Escriba su nombre">
+					</div>
+					<div class="form-group">
+						<label for="nombres" th:text="'Nombres:'"></label> <input
+							th:field="*{nombre}" id="nombres" type="text"
+							class="form-control" placeholder="Escriba su nombre">
+					</div>
+					<div class="form-group">
+						<label for="apellidos" th:text="'Apellidos:'"></label> <input
+							th:field="*{apellido}" id="apellidos" type="text"
+							class="form-control" placeholder="Escriba el apellido">
+					</div>
+					<div class="form-group">
+						<label for="direccion" th:text="'Direccion:'"></label> <input
+							th:field="*{direccion}" id="direccion" type="text"
+							class="form-control" placeholder="Escriba el apellido">
+					</div>
+					<div class="form-group">
+						<label for="celular" th:text="'Celular:'"></label> <input
+							th:field="*{celular}" id="celular" type="text"
+							class="form-control" placeholder="Escriba el Celular">
+					</div>
+					<div class="form-group">
+						<label for="correo" th:text="'Email:'"></label> <input
+							th:field="*{correo}" id="correo" type="email"
+							class="form-control" placeholder="Escriba el Email">
+					</div>
+					<div class="form-group">
+						<label for="clave" th:text="'Clave:'"></label> <input
+							th:field="*{clave}" id="clave" type="password"
+							class="form-control" placeholder="Escriba la clave">
+					</div>
+					<div class="form-group row">
+						<div class="col">
+							<label for="tipo" th:text="'Tipo:'"></label> <select
+								th:field="*{tipo}" id="tipo" class="form-control">
+								<option th:each="tipo:${tipo}" th:value="${tipo.id}"
+									th:text="${tipo.nombre}" />
+							</select>
+						</div>
+						<div class="col">
+							<label for="tipo" th:text="'Estado:'"></label> <select
+								th:field="*{estado}" id="estado" class="form-control">
+								<option th:each="estado:${estado}" th:value="${estado.id}"
+									th:text="${estado.nombre}" />
+							</select>
+						</div>
+					</div>
+					<div class="card-footer bg-dark">
+						<input type="submit" class="btn btn-success" value="Guardar" />
+					</div>
+				</form>
+				<!-- End of FORMULARIO -->
+			</div>
+			<!-- End of CARDBODY -->
+		</div>
+		<!-- End of CARD -->
+	</div>
+	<!-- End of CONTAINER -->
+	<footer th:replace="plantilla/template :: footer"> </footer>
+</body>
+</html>

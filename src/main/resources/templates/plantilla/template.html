@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:fragment="head">
+<meta charset="utf-8" />
+<title th:text="'Dashboard - Doggy Style'"></title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+	<!-- BARRA DE NAVEGACION -->
+	<header th:fragment="header" class="sticky-top">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+				<a class="navbar-brand" href="#"> <img src="/img/logo.png"
+					width="80" height="50" alt="">
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<!-- INICIO -->
+						<li class="nav-item"><a class="nav-link" th:text="'Inicio'"
+							th:href="@{/home}"></a></li>
+						<!-- CLIENTE -->
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false" th:text="'Usuario'"> </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" th:href="@{/views/usuarios/nuevo}"
+									th:text="'Nuevo Usuario'"></a> <a class="dropdown-item"
+									th:href="@{/views/usuarios/listar}"
+									th:text="'Lista de Usuarios'"></a>
+							</div></li>
+						<!-- MASCOTA -->
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false" th:text="'Mascota'"> </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#" th:text="'Nueva Mascota'"></a>
+								<a class="dropdown-item" href="#" th:text="'Lista de Mascotas'"></a>
+							</div></li>
+						<!-- VENTAS -->
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false" th:text="'Ventas'"></a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#" th:text="'Nueva Venta'"></a> <a
+									class="dropdown-item" href="#" th:text="'Lista de Ventas'"></a>
+							</div></li>
+						<!-- PRODUCTOS -->
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false" th:text="'Productos'"></a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" th:href="@{/views/productos/nuevo}"
+									th:text="'Nuevo Producto'"></a> <a class="dropdown-item"
+									th:href="@{/views/productos/listar}"
+									th:text="'lista de Productos'"></a>
+							</div></li>
+						<!-- CATEGORIAS -->
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false" th:text="'Categoria'"></a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" th:href="@{/views/categorias/nuevo}"
+									th:text="'Nueva Categoria'"></a> <a class="dropdown-item"
+									th:href="@{/views/categorias/listar}"
+									th:text="'Lista de Categorias'"></a>
+							</div></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="'Canasta'"></a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							th:text="'Acerca del Proyecto'"></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+	</header>
+
+	<!-- CONTENIDO -->
+	<div class="container"></div>
+
+
+	<!-- PIE DE PAGINA -->
+	<footer th:fragment="footer"
+		class="sticky-footer bg-dark text-white fixed-bottom">
+
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<span>Copyright &copy; Doggy Style 2021 - Todos los derechos
+					reservados</span>
+			</div>
+		</div>
+
+		<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<!-- <script src="funciones.js"></script> -->
+
+	</footer>
+
+
+</body>
+</html>

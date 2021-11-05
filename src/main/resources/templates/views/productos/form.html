@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- FORMULARIO PRODUCTO -->
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+	<div class="container col-lg-8">
+		<div class="card bg-ligth">
+			<div class="card-header bg-dark h3 mb-2 text-white text-center"
+				th:text="${titulo}"></div>
+			<div class="card-body">
+				<!-- FORMULARIO -->
+				<form th:action="@{/views/productos/guardar}" th:object=${producto}
+					method="post">
+					<div class="form-group">
+						<input th:field="*{id}" id="id" type="hidden" class="form-control"
+							placeholder="Escriba su id">
+					</div>
+					<div class="form-group">
+						<label for="nombres" th:text="'Nombre:'"></label> <input
+							th:field="*{nombre}" id="nombres" type="text"
+							class="form-control" placeholder="Escriba el nombre">
+					</div>
+					<div class="form-group">
+						<label for="precio" th:text="'Precio:'"></label> <input
+							th:field="*{precio}" id="precio" type="text" class="form-control"
+							placeholder="Escriba el precio">
+					</div>
+					<div class="form-group">
+						<label for="stock" th:text="'Stock:'"></label> <input
+							th:field="*{stock}" id="stock" type="text" class="form-control"
+							placeholder="Escriba el stock">
+					</div>
+					<div class="form-group row">
+						<div class="col">
+							<label for="categoria" th:text="'Categor&iacute;a:'"></label> <select
+								th:field="*{categoria}" id="tipo" class="form-control">
+								<option th:each="categoria:${categoria}"
+									th:value="${categoria.id}" th:text="${categoria.nombre}" />
+							</select>
+						</div>
+						<div class="col">
+							<label for="tipo" th:text="'Estado:'"></label> <select
+								th:field="*{estado}" id="estado" class="form-control">
+								<option th:each="estado:${estado}" th:value="${estado.id}"
+									th:text="${estado.nombre}" />
+							</select>
+						</div>
+					</div>
+					<div class="card-footer bg-dark">
+						<input type="submit" class="btn btn-success" value="Guardar" />
+					</div>
+				</form>
+				<!-- End of FORMULARIO -->
+			</div>
+			<!-- End of CARDBODY -->
+		</div>
+		<!-- End of CARD -->
+	</div>
+	<!-- End of CONTAINER -->
+	<!-- Footer -->
+	<footer th:replace="plantilla/template :: footer"> </footer>
+</body>
+</html>

@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <!-- FORMULARIO PRODUCTO -->
 <html xmlns:th="http://thymeleaf.org">
-<head th:replace="plantilla/template :: head">
+<head th:replace="administrador/template_admin :: head">
 </head>
 <body>
-	<header th:replace="plantilla/template :: header"></header>
+	<header th:replace="administrador/template_admin :: header"></header>
 	<div class="container col-lg-8">
 		<div class="card bg-ligth">
 			<div class="card-header bg-dark h3 mb-2 text-white text-center"
 				th:text="${titulo}"></div>
 			<div class="card-body">
 				<!-- FORMULARIO -->
-				<form th:action="@{/views/productos/guardar}" th:object=${producto}
+				<form th:action="@{/productos/save}" th:object=${producto}
 					method="post">
+					<!-- ID -->
 					<div class="form-group">
 						<input th:field="*{id}" id="id" type="hidden" class="form-control"
 							placeholder="Escriba su id">
 					</div>
+					<!-- ID -->
 					<div class="form-group">
 						<label for="nombres" th:text="'Nombre:'"></label> <input
 							th:field="*{nombre}" id="nombres" type="text"
 							class="form-control" placeholder="Escriba el nombre">
 					</div>
+					<!-- ID -->
 					<div class="form-group">
 						<label for="precio" th:text="'Precio:'"></label> <input
 							th:field="*{precio}" id="precio" type="text" class="form-control"
 							placeholder="Escriba el precio">
 					</div>
+					<!-- STOCK -->
 					<div class="form-group">
-						<label for="stock" th:text="'Stock:'"></label> <input
-							th:field="*{stock}" id="stock" type="text" class="form-control"
-							placeholder="Escriba el stock">
+						<label for="stock" th:text="'Cantidad:'"></label> <input
+							th:field="*{cantidad}" id="cantidad" type="text"
+							class="form-control" placeholder="Escriba el stock">
 					</div>
+					<!-- CATEGORIA Y ESTADO-->
 					<div class="form-group row">
 						<div class="col">
 							<label for="categoria" th:text="'Categor&iacute;a:'"></label> <select
@@ -48,6 +53,13 @@
 							</select>
 						</div>
 					</div>
+					<!-- imagen -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="img">Imagen:</label>
+						<div class="col-sm-10">
+							<input type="file" class="form-control-file" id="img" name="img">
+						</div>
+					</div>
 					<div class="card-footer bg-dark">
 						<input type="submit" class="btn btn-success" value="Guardar" />
 					</div>
@@ -60,6 +72,6 @@
 	</div>
 	<!-- End of CONTAINER -->
 	<!-- Footer -->
-	<footer th:replace="plantilla/template :: footer"> </footer>
+	<footer th:replace="administrador/template_admin :: footer"> </footer>
 </body>
 </html>

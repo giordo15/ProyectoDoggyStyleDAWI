@@ -3,12 +3,12 @@ package org.doggystyle.controler;
 import java.util.List;
 import java.util.Optional;
 
-import org.doggystyle.beans.Estado;
-import org.doggystyle.beans.Tipo;
-import org.doggystyle.beans.Usuario;
-import org.doggystyle.interfaceService.IEstadoService;
-import org.doggystyle.interfaceService.ITipoService;
-import org.doggystyle.interfaceService.IUsuarioService;
+import org.doggystyle.model.Estado;
+import org.doggystyle.model.Tipo;
+import org.doggystyle.model.Usuario;
+import org.doggystyle.service.EstadoService;
+import org.doggystyle.service.TipoService;
+import org.doggystyle.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,13 +24,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UsuarioController {
 	
 	@Autowired
-	private IUsuarioService usuarioservice;
+	private UsuarioService usuarioservice;
 	
 	@Autowired
-	private ITipoService tiposervice;
+	private TipoService tiposervice;
 	
 	@Autowired
-	private IEstadoService estadoservice;
+	private EstadoService estadoservice;
 	
 	@GetMapping("/listar")
 	public String listar(Model model) {

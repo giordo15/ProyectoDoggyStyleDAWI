@@ -1,4 +1,4 @@
-package org.doggystyle.beans;
+package org.doggystyle.model;
 
 import javax.persistence.*;
 

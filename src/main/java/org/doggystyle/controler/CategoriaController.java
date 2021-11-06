@@ -3,10 +3,11 @@ package org.doggystyle.controler;
 import java.util.List;
 import java.util.Optional;
 
-import org.doggystyle.beans.Categoria;
-import org.doggystyle.beans.Estado;
-import org.doggystyle.interfaceService.ICategoriaService;
-import org.doggystyle.interfaceService.IEstadoService;
+
+import org.doggystyle.model.Categoria;
+import org.doggystyle.model.Estado;
+import org.doggystyle.service.CategoriaService;
+import org.doggystyle.service.EstadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,10 +23,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CategoriaController {
 	
 	@Autowired
-	private ICategoriaService categoriaservice;
+	private CategoriaService categoriaservice;
 	
 	@Autowired
-	private IEstadoService estadoservice;
+	private EstadoService estadoservice;
 		
 	@GetMapping("/listar")
 	public String listar(Model model) {

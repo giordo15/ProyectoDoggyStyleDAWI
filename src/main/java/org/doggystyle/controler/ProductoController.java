@@ -3,12 +3,13 @@ package org.doggystyle.controler;
 import java.util.List;
 import java.util.Optional;
 
-import org.doggystyle.beans.Categoria;
-import org.doggystyle.beans.Estado;
-import org.doggystyle.beans.Producto;
-import org.doggystyle.interfaceService.ICategoriaService;
-import org.doggystyle.interfaceService.IEstadoService;
-import org.doggystyle.interfaceService.IProductoService;
+import org.doggystyle.model.Categoria;
+import org.doggystyle.model.Estado;
+import org.doggystyle.model.Producto;
+import org.doggystyle.service.CategoriaService;
+import org.doggystyle.service.EstadoService;
+import org.doggystyle.service.ProductoService;
+import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,28 +21,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/views/productos")
+@RequestMapping("/productos")
 public class ProductoController {
 	
+	private final Logger LOGGER = LoggerFactory.getLogger(ProductoController.class);
 	@Autowired
-	private IProductoService productoservice;
+	private ProductoService productoservice;
 	
 	@Autowired
-	private ICategoriaService categoriaservice;
+	private CategoriaService categoriaservice;
 	
 	@Autowired
-	private IEstadoService estadoservice;
+	private EstadoService estadoservice;
 	
-	@GetMapping("/listar")
-	public String listar(Model model) {
-		List<Producto>productos = productoservice.listar();		
+	@GetMapping("")
+	public String list(Model model) {
+		List<Producto>productos = productoservice.findAll();		
 		model.addAttribute("titulo", "Lista de Productos");
 		model.addAttribute("productos", productos);		
-		return "/views/productos/listar";
+		return "productos/show";
 	}
 	
-	@GetMapping("/nuevo")
-	public String agregar(Model model) {		
+	@GetMapping("/create")
+	public String create(Model model) {		
 		Producto producto = new Producto();
 		List<Categoria> listCategoria = categoriaservice.listar();
 		List<Estado> listEstado = estadoservice.listaEstado();
@@ -49,32 +51,33 @@ public class ProductoController {
 		model.addAttribute("producto", producto);
 		model.addAttribute("categoria", listCategoria);
 		model.addAttribute("estado", listEstado);
-		return "/views/productos/form";
+		return "/productos/form";
 	}
 	
-	@PostMapping("/guardar")
-	public String guardar(@Validated Producto p, Model model) {
-		productoservice.guardar(p);
-		return "redirect:/views/productos/listar";
+	@PostMapping("/save")
+	public String save(@Validated Producto p, Model model) {
+		LOGGER.info("Este es el objeto producto {}",p);
+		productoservice.save(p);
+		return "redirect:/productos";
 	}
 	
-	@GetMapping("/editar/{id}")
+	@GetMapping("/edit/{id}")
 	public String editar(@PathVariable int id, Model model) {
 		
 		List<Categoria> listCategoria = categoriaservice.listar();
 		List<Estado> listEstado = estadoservice.listaEstado();
-		Optional<Producto>producto = productoservice.listarId(id);
+		Optional<Producto>producto = productoservice.get(id);
 		model.addAttribute("titulo","Editar Producto");
 		model.addAttribute("producto", producto);
 		model.addAttribute("categoria", listCategoria);
 		model.addAttribute("estado", listEstado);
-		return "/views/productos/form";
+		return "/productos/form";
 	}
 	
-	@GetMapping("/eliminar/{id}")
-	public String eliminar(Model model, @PathVariable int id) {
-		productoservice.eliminar(id);
+	@GetMapping("/delete/{id}")
+	public String delete(Model model, @PathVariable int id) {
+		productoservice.delete(id);
 		System.out.println("registro eliminado con exito");
-		return "redirect:/views/productos/listar";	
+		return "redirect:/productos/";	
 	}
 }

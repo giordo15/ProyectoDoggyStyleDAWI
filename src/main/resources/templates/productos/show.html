@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- SHOW PRODUCTOS -->
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="administrador/template_admin :: head">
+</head>
+<body>
+	<header th:replace="administrador/template_admin :: header"></header>
+	<div class="container col-lg-6">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/administrador}">Inicio</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Productos</li>
+			</ol>
+		</nav>
+		<h1 th:text="${titulo}"></h1>
+	</div>
+	<div class="container col-lg-6">
+		<a class="btn btn-success" th:href="@{/productos/create}"
+			th:text="'Nuevo Registro'" title="Crear Nuevo Registro"></a>
+	</div>
+	<br>
+	<div class="container col-lg-6">
+
+		<table class="table" id="dataTable">
+			<thead class="thead-dark">
+				<tr>
+					
+					<th scope="col" th:text="'Codigo'"></th>
+					<th scope="col" th:text="'Nombre'"></th>
+					<th scope="col" th:text="'Precio'"></th>
+					<th scope="col" th:text="'Stock'"></th>
+					<th scope="col" th:text="'Categor&iacute;a'"></th>
+					<th scope="col" th:text="'Estado'"></th>
+					<th scope="col" th:text="'Acciones'"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="producto:${productos}">
+					<td scope="row" th:text="${producto.id}"></td>
+					<td th:text="${producto.nombre}"></td>
+					<td th:text="${producto.precio}"></td>
+					<td th:text="${producto.cantidad}"></td>
+					<td th:text="${producto.categoria.nombre}"></td>
+					<td th:text="${producto.estado.nombre}"></td>
+					<td><a class="badge badge-warning badge-sm" th:text="'Editar'"
+						title="Editar Registro"
+						th:href="@{/productos/edit/}+${producto.id}"></a> <a
+						class="badge badge-danger" th:text="'Eliminar'"
+						title="Eliminar Registro"
+						th:href="@{/productos/delete/}+${producto.id}"
+						th:onclick="delete([[${producto.id}]])"></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Footer -->
+	<footer th:replace="administrador/template_admin :: footer"> </footer>
+
+
+
+</body>
+
+
+</html>

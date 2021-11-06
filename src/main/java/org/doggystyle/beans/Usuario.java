@@ -1,6 +1,7 @@
 package org.doggystyle.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -8,9 +9,6 @@ import javax.persistence.*;
 @Table(name = "usuario")
 public class Usuario implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -28,6 +26,12 @@ public class Usuario implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "estado_id")
 	private Estado estado;
+	
+	@OneToMany(mappedBy = "usuario")
+	private List<Producto> productos;
+	
+	@OneToMany(mappedBy = "usuario")
+	private List<Orden> ordenes;
 	
 	
 	
@@ -123,8 +127,24 @@ public class Usuario implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
+	}	
 
+	public List<Producto> getProductos() {
+		return productos;
+	}
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
+	
+	
+	public List<Orden> getOrdenes() {
+		return ordenes;
+	}
+	public void setOrdenes(List<Orden> ordenes) {
+		this.ordenes = ordenes;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion

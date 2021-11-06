@@ -27,15 +27,17 @@ public class Producto implements Serializable{
 	@JoinColumn(name = "estado_id")
 	private Estado estado;
 	
+	@ManyToOne
+	private Usuario usuario;
+	
 	
 	public Producto() {
 	
 	}
 
-
 	public Producto(int id, String nombre, double precio, int cantidad, String imagen, Categoria categoria,
-			Estado estado) {
-		
+			Estado estado, Usuario usuario) {
+		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.precio = precio;
@@ -43,7 +45,10 @@ public class Producto implements Serializable{
 		this.imagen = imagen;
 		this.categoria = categoria;
 		this.estado = estado;
+		this.usuario = usuario;
 	}
+
+
 
 
 	public int getId() {
@@ -114,6 +119,18 @@ public class Producto implements Serializable{
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
+
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 
 
 	@Override

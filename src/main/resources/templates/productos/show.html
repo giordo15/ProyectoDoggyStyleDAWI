@@ -8,8 +8,8 @@
 	<div class="container col-lg-6">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a th:href="@{/administrador}">Inicio</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Productos</li>
+				<li class="breadcrumb-item"><a th:href="@{/administrador}" th:text="'Inicio'"></a></li>
+				<li class="breadcrumb-item active" aria-current="page" th:text="'Productos'"></li>
 			</ol>
 		</nav>
 		<h1 th:text="${titulo}"></h1>
@@ -44,11 +44,10 @@
 					<td th:text="${producto.estado.nombre}"></td>
 					<td><a class="badge badge-warning badge-sm" th:text="'Editar'"
 						title="Editar Registro"
-						th:href="@{/productos/edit/}+${producto.id}"></a> <a
-						class="badge badge-danger" th:text="'Eliminar'"
+						th:href="@{/productos/edit/}+${producto.id}"></a> 
+						<a class="badge badge-danger" th:text="'Eliminar'"
 						title="Eliminar Registro"
-						th:href="@{/productos/delete/}+${producto.id}"
-						th:onclick="delete([[${producto.id}]])"></a></td>
+						th:href="@{/productos/delete/}+${producto.id}"></a></td>
 				</tr>
 			</tbody>
 		</table>

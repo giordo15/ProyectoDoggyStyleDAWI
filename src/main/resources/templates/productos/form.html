@@ -5,7 +5,17 @@
 </head>
 <body>
 	<header th:replace="administrador/template_admin :: header"></header>
-	<div class="container col-lg-8">
+	<div class="container col-lg-6">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/administrador}"
+					th:text="'Inicio'"></a></li>
+				<li class="breadcrumb-item"><a th:href="@{/productos}"
+					th:text="'Productos'"></a></li>
+				<li class="breadcrumb-item active" aria-current="page"
+					th:text="${titulo}"></li>
+			</ol>
+		</nav>
 		<div class="card bg-ligth">
 			<div class="card-header bg-dark h3 mb-2 text-white text-center"
 				th:text="${titulo}"></div>

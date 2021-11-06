@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.doggystyle.model.Producto;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ProductoService {
 
 	public List<Producto> findAll();

@@ -4,34 +4,37 @@ import java.util.List;
 import java.util.Optional;
 
 import org.doggystyle.model.Usuario;
-import org.doggystyle.repository.UsuarioInterfaces;
+import org.doggystyle.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 	
 	
 	@Autowired
-	private UsuarioInterfaces data;
-
+	private UsuarioRepository usuarioRepository;
+	
 	@Override
-	public List<Usuario> listar() {
-		// TODO Auto-generated method stub
-		return (List<Usuario>)data.findAll();
+	public List<Usuario> findAll() {
+		return (List<Usuario>)usuarioRepository.findAll();
+	}
+	
+	@Override
+	public Usuario save(Usuario usuario) {
+		return usuarioRepository.save(usuario);
 	}
 
 	@Override
-	public Optional<Usuario> listarId(int id) {
+	public Optional<Usuario> get(int id) {
 		
-		return data.findById(id);
+		return usuarioRepository.findById(id);
 	}
 
 	@Override
-	public int guardar(Usuario u) {
+	public int update(Usuario u) {
 		int res=0;
-		Usuario usuario = data.save(u);
+		Usuario usuario = usuarioRepository.save(u);
 		if(!usuario.equals(null)) {
 			res = 1;
 		}
@@ -40,10 +43,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 
 	@Override
-	public void eliminar(int id) {
-		data.deleteById(id);
+	public void delete(int id) {
+		usuarioRepository.deleteById(id);
 		
 	}
+
+	
 
 	
 

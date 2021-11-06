@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- SHOW PRODUCTOS -->
-<html xmlns:th="http://thymeleaf.org">
+<html lang="es" xmlns:th="http://thymeleaf.org">
 <head th:replace="administrador/template_admin :: head">
 </head>
 <body>
@@ -8,8 +8,10 @@
 	<div class="container col-lg-6">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a th:href="@{/administrador}" th:text="'Inicio'"></a></li>
-				<li class="breadcrumb-item active" aria-current="page" th:text="'Productos'"></li>
+				<li class="breadcrumb-item"><a th:href="@{/administrador}"
+					th:text="'Inicio'"></a></li>
+				<li class="breadcrumb-item active" aria-current="page"
+					th:text="'Productos'"></li>
 			</ol>
 		</nav>
 		<h1 th:text="${titulo}"></h1>
@@ -20,15 +22,14 @@
 	</div>
 	<br>
 	<div class="container col-lg-6">
-
 		<table class="table" id="dataTable">
 			<thead class="thead-dark">
 				<tr>
-					
+
 					<th scope="col" th:text="'Codigo'"></th>
 					<th scope="col" th:text="'Nombre'"></th>
 					<th scope="col" th:text="'Precio'"></th>
-					<th scope="col" th:text="'Stock'"></th>
+					<th scope="col" th:text="'Cantidad'"></th>
 					<th scope="col" th:text="'Categor&iacute;a'"></th>
 					<th scope="col" th:text="'Estado'"></th>
 					<th scope="col" th:text="'Acciones'"></th>
@@ -44,8 +45,8 @@
 					<td th:text="${producto.estado.nombre}"></td>
 					<td><a class="badge badge-warning badge-sm" th:text="'Editar'"
 						title="Editar Registro"
-						th:href="@{/productos/edit/}+${producto.id}"></a> 
-						<a class="badge badge-danger" th:text="'Eliminar'"
+						th:href="@{/productos/edit/}+${producto.id}"></a> <a
+						class="badge badge-danger" th:text="'Eliminar'"
 						title="Eliminar Registro"
 						th:href="@{/productos/delete/}+${producto.id}"></a></td>
 				</tr>

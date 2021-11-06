@@ -62,8 +62,7 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/edit/{id}")
-	public String editar(@PathVariable int id, Model model) {
-		
+	public String editar(@PathVariable int id, Model model) {		
 		List<Categoria> listCategoria = categoriaservice.listar();
 		List<Estado> listEstado = estadoservice.listaEstado();
 		Optional<Producto>producto = productoservice.get(id);

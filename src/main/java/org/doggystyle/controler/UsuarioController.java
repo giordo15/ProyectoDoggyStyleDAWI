@@ -9,6 +9,8 @@ import org.doggystyle.model.Usuario;
 import org.doggystyle.service.EstadoService;
 import org.doggystyle.service.TipoService;
 import org.doggystyle.service.UsuarioService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/views/usuarios")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 	
+	private final Logger LOGGER = LoggerFactory.getLogger(ProductoController.class);
 	@Autowired
 	private UsuarioService usuarioservice;
 	
@@ -32,16 +35,16 @@ public class UsuarioController {
 	@Autowired
 	private EstadoService estadoservice;
 	
-	@GetMapping("/listar")
-	public String listar(Model model) {
-		List<Usuario>usuarios = usuarioservice.listar();		
+	@GetMapping("")
+	public String list(Model model) {
+		List<Usuario>usuarios = usuarioservice.findAll();		
 		model.addAttribute("titulo", "Lista de Usuarios");
 		model.addAttribute("usuarios", usuarios);		
-		return "/views/usuarios/listar";
+		return "/usuarios/show";
 	}
 	
-	@GetMapping("/nuevo")
-	public String agregar(Model model) {		
+	@GetMapping("/create")
+	public String create(Model model) {		
 		Usuario usuario = new Usuario();
 		List<Tipo> listTipo = tiposervice.listaTipo();
 		List<Estado> listEstado = estadoservice.listaEstado();
@@ -49,34 +52,33 @@ public class UsuarioController {
 		model.addAttribute("usuario", usuario);
 		model.addAttribute("tipo", listTipo);
 		model.addAttribute("estado", listEstado);
-		return "/views/usuarios/form";
+		return "/usuarios/form";
 	}
 	
-	@PostMapping("/guardar")
-	public String guardar(@Validated Usuario u, Model model) {
-		usuarioservice.guardar(u);
-		return "redirect:/views/usuarios/listar";
+	@PostMapping("/save")
+	public String save(@Validated Usuario u, Model model) {
+		LOGGER.info("Este es el objeto usuario {}",u);
+		usuarioservice.save(u);
+		return "redirect:/usuarios";
 	}
 	
-	@GetMapping("/editar/{id}")
-	public String editar(@PathVariable int id, Model model) {
-		
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable int id, Model model) {		
 		List<Tipo> listTipo = tiposervice.listaTipo();
 		List<Estado> listEstado = estadoservice.listaEstado();
-		Optional<Usuario>usuario = usuarioservice.listarId(id);
+		Optional<Usuario>usuario = usuarioservice.get(id);
 		model.addAttribute("titulo","Editar Cliente");
 		model.addAttribute("usuario", usuario);
 		model.addAttribute("tipo", listTipo);
 		model.addAttribute("estado", listEstado);
-		return "/views/usuarios/form";
+		return "/usuarios/form";
 	}
 	
-	@GetMapping("/eliminar/{id}")
-	public String eliminar(Model model, @PathVariable int id) {
-		usuarioservice.eliminar(id);
+	@GetMapping("/delete/{id}")
+	public String delete(Model model, @PathVariable int id) {
+		usuarioservice.delete(id);
 		System.out.println("registro eliminado con exito");
-		return "redirect:/views/usuarios/listar";
-		
+		return "redirect:/usuarios";
 	}
 
 }

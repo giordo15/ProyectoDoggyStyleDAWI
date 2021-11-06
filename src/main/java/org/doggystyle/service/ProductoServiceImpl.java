@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductoServiceImp implements ProductoService{
+public class ProductoServiceImpl implements ProductoService{
 	
 	@Autowired
 	private ProductoRepository productoRepository;
@@ -21,7 +21,6 @@ public class ProductoServiceImp implements ProductoService{
 
 	@Override
 	public Producto save(Producto producto) {
-		// TODO Auto-generated method stub
 		return productoRepository.save(producto);
 	}
 

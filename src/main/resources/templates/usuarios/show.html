@@ -5,7 +5,7 @@
 </head>
 <body>
 	<header th:replace="administrador/template_admin :: header"></header>
-	<div class="container col-lg-6">
+	<div class="container col-lg-8">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a th:href="@{/administrador}"
@@ -13,15 +13,15 @@
 				<li class="breadcrumb-item active" aria-current="page"
 					th:text="'Usuarios'"></li>
 			</ol>
-		</nav>
-		<h1 th:text="${titulo}"></h1>
+		</nav>	
 	</div>
-	<div class="container col-lg-6">
+	<div class="container col-lg-8">
+	<h1 th:text="${titulo}"></h1>
 		<a class="btn btn-success" th:href="@{/usuarios/create}"
 			th:text="'Nuevo Registro'" title="Crear Nuevo Registro"></a>
 	</div>
 	<br>
-	<div class="container col-lg-6">
+	<div class="container col-lg-8">
 		<table class="table" id="dataTable">
 			<thead class="thead-dark">
 				<tr>
@@ -49,21 +49,16 @@
 					<td th:text="${usuario.tipo.nombre}"></td>
 					<td th:text="${usuario.estado.nombre}"></td>
 					<td><a class="badge badge-warning badge-sm" th:text="Editar"
-						title="Editar Registro" th:href="@{/usuarios/edit/}+${usuario.id}"></a>
-						<a class="badge badge-danger" th:text="'Eliminar'"
+						title="Editar Registro"
+						th:href="@{/usuarios/edit/}+${usuario.id}"></a>
+						<a class="badge badge-danger badge-sm" th:text="'Eliminar'"
 						title="Eliminar Registro"
 						th:href="@{/usuarios/delete/}+${usuario.id}"></a></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	<!-- /.container-fluid -->
-
 	<!-- Footer -->
 	<footer th:replace="administrador/template_admin :: footer"> </footer>
-
-
 </body>
-
-
 </html>

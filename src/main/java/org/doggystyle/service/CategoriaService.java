@@ -7,9 +7,10 @@ import org.doggystyle.model.Categoria;
 
 public interface CategoriaService {
 	
-	List<Categoria> listar();
-	public Optional<Categoria>listarId(int id);
-	public int guardar(Categoria c);
-	public void eliminar(int id);
+	List<Categoria> findAll();
+	public Categoria save(Categoria categoria);
+	public Optional<Categoria>get(int id);
+	public int update(Categoria u);
+	public void delete(int id);
 
 }

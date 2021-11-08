@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/views/categorias")
+@RequestMapping("/categorias")
 public class CategoriaController {
 	
 	@Autowired
@@ -28,44 +28,44 @@ public class CategoriaController {
 	@Autowired
 	private EstadoService estadoservice;
 		
-	@GetMapping("/listar")
-	public String listar(Model model) {
-		List<Categoria>categorias = categoriaservice.listar();		
+	@GetMapping("")
+	public String list(Model model) {
+		List<Categoria>categorias = categoriaservice.findAll();		
 		model.addAttribute("titulo", "Lista de Categorias");
 		model.addAttribute("categorias", categorias);		
-		return "/views/categorias/listar";
+		return "/categorias/show";
 	}
 	
-	@GetMapping("/nuevo")
+	@GetMapping("/create")
 	public String agregar(Model model) {		
 		Categoria categoria = new Categoria();
 		List<Estado> listEstado = estadoservice.listaEstado();
 		model.addAttribute("titulo","Nueva Categoria");
 		model.addAttribute("categoria", categoria);
 		model.addAttribute("estado", listEstado);
-		return "/views/categorias/form";
+		return "/categorias/form";
 	}
 	
-	@PostMapping("/guardar")
-	public String guardar(@Validated Categoria c, Model model) {
-		categoriaservice.guardar(c);
-		return "redirect:/views/categorias/listar";
+	@PostMapping("/save")
+	public String save(@Validated Categoria c, Model model) {
+		categoriaservice.save(c);
+		return "redirect:/categorias/";
 	}
 	
-	@GetMapping("/editar/{id}")
-	public String editar(@PathVariable int id, Model model) {
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable int id, Model model) {
 		List<Estado> listEstado = estadoservice.listaEstado();
-		Optional<Categoria>categoria = categoriaservice.listarId(id);
+		Optional<Categoria>categoria = categoriaservice.get(id);
 		model.addAttribute("titulo","Editar Categoria");
 		model.addAttribute("categoria", categoria);
 		model.addAttribute("estado", listEstado);
-		return "/views/categorias/form";
+		return "/categorias/form";
 	}
 	
-	@GetMapping("/eliminar/{id}")
-	public String eliminar(Model model, @PathVariable int id) {
-		categoriaservice.eliminar(id);
+	@GetMapping("/delete/{id}")
+	public String delete(Model model, @PathVariable int id) {
+		categoriaservice.delete(id);
 		System.out.println("registro eliminado con exito");
-		return "redirect:/views/categorias/listar";	
+		return "redirect:/categorias/";	
 	}
 }

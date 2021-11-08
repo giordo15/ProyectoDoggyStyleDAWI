@@ -45,7 +45,7 @@ public class ProductoController {
 	@GetMapping("/create")
 	public String create(Model model) {		
 		Producto producto = new Producto();
-		List<Categoria> listCategoria = categoriaservice.listar();
+		List<Categoria> listCategoria = categoriaservice.findAll();
 		List<Estado> listEstado = estadoservice.listaEstado();
 		model.addAttribute("titulo","Nuevo Producto");
 		model.addAttribute("producto", producto);
@@ -63,7 +63,7 @@ public class ProductoController {
 	
 	@GetMapping("/edit/{id}")
 	public String editar(@PathVariable int id, Model model) {		
-		List<Categoria> listCategoria = categoriaservice.listar();
+		List<Categoria> listCategoria = categoriaservice.findAll();
 		List<Estado> listEstado = estadoservice.listaEstado();
 		Optional<Producto>producto = productoservice.get(id);
 		model.addAttribute("titulo","Editar Producto");

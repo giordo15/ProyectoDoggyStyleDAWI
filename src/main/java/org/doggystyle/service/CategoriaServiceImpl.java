@@ -12,22 +12,27 @@ import org.springframework.stereotype.Service;
 public class CategoriaServiceImpl implements CategoriaService {
 
 	@Autowired
-	private CategoriaRepository data;
+	private CategoriaRepository categoriaRepository;
 
 	@Override
-	public List<Categoria> listar() {
-		return (List<Categoria>) data.findAll();
+	public List<Categoria> findAll() {
+		return (List<Categoria>)categoriaRepository.findAll();
 	}
 
 	@Override
-	public Optional<Categoria> listarId(int id) {
-		return data.findById(id);
+	public Categoria save(Categoria categoria) {
+		return categoriaRepository.save(categoria);
 	}
 
 	@Override
-	public int guardar(Categoria c) {
+	public Optional<Categoria> get(int id) {
+		return categoriaRepository.findById(id);
+	}
+
+	@Override
+	public int update(Categoria c) {
 		int res = 0;
-		Categoria categoria = data.save(c);
+		Categoria categoria = categoriaRepository.save(c);
 		if (!categoria.equals(null)) {
 			res = 1;
 		}
@@ -35,7 +40,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 	}
 
 	@Override
-	public void eliminar(int id) {
-		data.deleteById(id);
+	public void delete(int id) {
+		categoriaRepository.deleteById(id);		
 	}
 }

@@ -11,7 +11,7 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
 				<a class="navbar-brand" th:href="@{/administrador}"> <img
-					src="/img/logo.png" width="80" height="50" alt="">
+					src="/images/logo.png" width="80" height="50" alt="">
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent"
@@ -35,7 +35,7 @@
 								<a class="dropdown-item" th:href="@{/compras}" th:text="'Compras'"></a>
 								<a class="dropdown-item" th:href="@{/acerca_del_proyecto}" th:text="'Acerca del Proyecto'"></a>
 							</div></li>
-							<li class="nav-item"><a class="nav-link" href="login.html">Cerrar Sesion</a></li>
+							<li class="nav-item"><a class="nav-link" href="login.html" th:text="'Cerrar Sesion'"></a></li>
 						</ul>
 					</div>
 

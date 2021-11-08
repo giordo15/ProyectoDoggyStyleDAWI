@@ -1,27 +1,40 @@
 <!DOCTYPE html>
-<!-- FORMULARIO CATEGORIA -->
-<html xmlns:th="http://thymeleaf.org">
-<head th:replace="plantilla/template :: head">
+<!-- FORMULARIO CATEGORIAS -->
+<html lang="es" xmlns:th="http://thymeleaf.org">
+<head th:replace="administrador/template_admin :: head">
 </head>
 <body>
-	<header th:replace="plantilla/template :: header"></header>
+	<header th:replace="administrador/template_admin :: header"></header>
 	<div class="container col-lg-8">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/administrador}"
+					th:text="'Inicio'"></a></li>
+				<li class="breadcrumb-item"><a th:href="@{/categorias}"
+					th:text="'Categorias'"></a></li>
+				<li class="breadcrumb-item active" aria-current="page"
+					th:text="${titulo}"></li>
+			</ol>
+		</nav>
 		<div class="card bg-ligth">
 			<div class="card-header bg-dark h3 mb-2 text-white text-center"
 				th:text="${titulo}"></div>
 			<div class="card-body">
 				<!-- FORMULARIO -->
-				<form th:action="@{/views/categorias/guardar}"
-					th:object=${categoria} method="post">
+				<form th:action="@{/categorias/save}" th:object=${categoria}
+					method="post">
+					<!-- ID -->
 					<div class="form-group">
 						<input th:field="*{id}" id="id" type="hidden" class="form-control"
 							placeholder="Escriba su id">
 					</div>
+					<!-- CATEGORIA -->
 					<div class="form-group">
 						<label for="nombres" th:text="'Nombre:'"></label> <input
 							th:field="*{nombre}" id="nombres" type="text"
 							class="form-control" placeholder="Escriba el nombre">
 					</div>
+					<!-- ESTADO -->
 					<div class="form-group">
 						<label for="tipo" th:text="'Estado:'"></label> <select
 							th:field="*{estado}" id="estado" class="form-control">
@@ -42,6 +55,6 @@
 	</div>
 	<!-- End of CONTAINER -->
 	<!-- Footer -->
-	<footer th:replace="plantilla/template :: footer"></footer>
+	<footer th:replace="administrador/template_admin :: footer"> </footer>
 </body>
 </html>

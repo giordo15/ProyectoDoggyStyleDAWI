@@ -14,10 +14,7 @@ public class ProductoServiceImpl implements ProductoService{
 	@Autowired
 	private ProductoRepository productoRepository;
 	
-	@Override
-	public List<Producto> findAll() {
-		return (List<Producto>)productoRepository.findAll();
-	}
+	
 
 	@Override
 	public Producto save(Producto producto) {
@@ -30,19 +27,19 @@ public class ProductoServiceImpl implements ProductoService{
 	}
 
 	@Override
-	public int update(Producto p) {
-		int res=0;
-		Producto producto = productoRepository.save(p);
-		if(!producto.equals(null)) {
-			res = 1;
-		}
-		return res;
+	public void update(Producto producto) {
+		productoRepository.save(producto);
 	}
 
 	@Override
 	public void delete(int id) {
 		productoRepository.deleteById(id);
 		
+	}
+	
+	@Override
+	public List<Producto> findAll() {
+		return (List<Producto>)productoRepository.findAll();
 	}
 
 }

@@ -24,9 +24,10 @@
 				<form th:action="@{/views/usuarios/guardar}" th:object=${usuario}
 					method="post">
 					<!-- ID -->
+					
 					<div class="form-group">
-						<input th:field="*{id}" id="id" type="hidden" class="form-control"
-							placeholder="Escriba su id">
+						<input th:field="*{id}" id="id" readonly class="form-control"
+							placeholder="id">
 					</div>
 					<!-- NOMBRES -->
 					<div class="form-group">
@@ -64,37 +65,26 @@
 							th:field="*{clave}" id="clave" type="password"
 							class="form-control" placeholder="Escriba la clave">
 					</div>
-					<!-- TIPO Y ESTADO-->
-					<div class="form-group row">
-						<div class="col">
-							<label for="tipo" th:text="'Tipo:'"></label> <select
-								th:field="*{tipo}" id="tipo" class="form-control">
-								<option th:each="tipo:${tipo}" th:value="${tipo.id}"
-									th:text="${tipo.nombre}" />
-							</select>
-						</div>
-						<div class="col">
-							<label for="tipo" th:text="'Estado:'"></label> <select
-								th:field="*{estado}" id="estado" class="form-control">
-								<option th:each="estado:${estado}" th:value="${estado.id}"
-									th:text="${estado.nombre}" />
-							</select>
-						</div>
+					<!-- TIPO-->
+					<div class="form-group">
+						<label for="clave" th:text="'Tipo:'"></label> <input
+							th:field="*{tipo}" id="clave" type="password"
+							class="form-control" placeholder="Escriba el tipo">
 					</div>
-					<div class="card-footer bg-dark">
+					
 						<input type="submit" class="btn btn-success" value="Guardar" />
-					</div>
+					
 				</form>
 				<!-- End of FORMULARIO -->
 			</div>
 			<!-- End of CARDBODY -->
 		</div>
 		<!-- End of CARD -->
+		<br>
 	</div>
+	
 	<!-- End of CONTAINER -->
 	<!-- Footer -->
 	<footer th:replace="administrador/template_admin :: footer"> </footer>
 </body>
-</html>
-body>
 </html>

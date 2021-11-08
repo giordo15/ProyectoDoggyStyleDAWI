@@ -15,17 +15,12 @@ public class Producto implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String nombre;
 	private double precio; 
 	private int cantidad;
 	private String imagen;
-	@ManyToOne
-	@JoinColumn(name="categoria_id")
-	private Categoria categoria;
-	@ManyToOne
-	@JoinColumn(name = "estado_id")
-	private Estado estado;
+	
 	
 	@ManyToOne
 	private Usuario usuario;
@@ -35,28 +30,25 @@ public class Producto implements Serializable{
 	
 	}
 
-	public Producto(int id, String nombre, double precio, int cantidad, String imagen, Categoria categoria,
-			Estado estado, Usuario usuario) {
+	public Producto(Integer id, String nombre, double precio, int cantidad, String imagen, Usuario usuario) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.cantidad = cantidad;
 		this.imagen = imagen;
-		this.categoria = categoria;
-		this.estado = estado;
 		this.usuario = usuario;
 	}
 
 
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -101,24 +93,7 @@ public class Producto implements Serializable{
 	}
 
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
 
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-
-	public Estado getEstado() {
-		return estado;
-	}
-
-
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
 
 
 	public Usuario getUsuario() {
@@ -136,7 +111,7 @@ public class Producto implements Serializable{
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", cantidad=" + cantidad
-				+ ", imagen=" + imagen + ", categoria=" + categoria + ", estado=" + estado + "]";
+				+ ", imagen=" + imagen + "]";
 	}
 	
 	

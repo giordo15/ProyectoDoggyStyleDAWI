@@ -3,11 +3,8 @@ package org.doggystyle.controler;
 import java.util.List;
 import java.util.Optional;
 
-import org.doggystyle.model.Estado;
-import org.doggystyle.model.Tipo;
+
 import org.doggystyle.model.Usuario;
-import org.doggystyle.service.EstadoService;
-import org.doggystyle.service.TipoService;
 import org.doggystyle.service.UsuarioService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,11 +26,6 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioservice;
 	
-	@Autowired
-	private TipoService tiposervice;
-	
-	@Autowired
-	private EstadoService estadoservice;
 	
 	@GetMapping("")
 	public String list(Model model) {
@@ -46,12 +38,8 @@ public class UsuarioController {
 	@GetMapping("/create")
 	public String create(Model model) {		
 		Usuario usuario = new Usuario();
-		List<Tipo> listTipo = tiposervice.listaTipo();
-		List<Estado> listEstado = estadoservice.listaEstado();
 		model.addAttribute("titulo","Nuevo Cliente");
 		model.addAttribute("usuario", usuario);
-		model.addAttribute("tipo", listTipo);
-		model.addAttribute("estado", listEstado);
 		return "/usuarios/form";
 	}
 	
@@ -63,14 +51,10 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/edit/{id}")
-	public String edit(@PathVariable int id, Model model) {		
-		List<Tipo> listTipo = tiposervice.listaTipo();
-		List<Estado> listEstado = estadoservice.listaEstado();
+	public String edit(@PathVariable int id, Model model) {	
 		Optional<Usuario>usuario = usuarioservice.get(id);
 		model.addAttribute("titulo","Editar Cliente");
 		model.addAttribute("usuario", usuario);
-		model.addAttribute("tipo", listTipo);
-		model.addAttribute("estado", listEstado);
 		return "/usuarios/form";
 	}
 	

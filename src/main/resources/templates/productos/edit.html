@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- FORMULARIO PRODUCTO -->
+<!-- EDITAR PRODUCTO -->
 <html lang="es" xmlns:th="http://thymeleaf.org">
 <head th:replace="administrador/template_admin :: head">
 </head>
@@ -21,56 +21,38 @@
 				th:text="${titulo}"></div>
 			<div class="card-body">
 				<!-- FORMULARIO -->
-				<form th:action="@{/productos/save}" th:object=${producto}
-					method="post">
+				<form th:action="@{/productos/update}" method="post" enctype="multipart/form-data">
 					<!-- ID -->
 					<div class="form-group">
-						<input th:field="*{id}" id="id" type="hidden" class="form-control"
-							placeholder="Escriba su id">
+					<label for="nombres" th:text="'Codigo:'"></label>
+					<input type="text" name="id"  readonly required autocomplete="off" class="form-control" th:value="${producto.id}">
 					</div>
-					<!-- ID -->
+					<!-- NOMBRE -->
 					<div class="form-group">
 						<label for="nombres" th:text="'Nombre:'"></label> <input
-							th:field="*{nombre}" id="nombres" type="text"
-							class="form-control" placeholder="Escriba el nombre">
+							name="nombre" id="nombres" type="text" th:value="${producto.nombre}"
+							required autocomplete="off" class="form-control" placeholder="Escriba el nombre">
 					</div>
-					<!-- ID -->
+					<!-- PRECIO -->
 					<div class="form-group">
 						<label for="precio" th:text="'Precio:'"></label> <input
-							th:field="*{precio}" id="precio" type="text" class="form-control"
-							placeholder="Escriba el precio">
+							name="precio" id="precio" type="text" th:value="${producto.precio}"
+							required autocomplete="off" class="form-control" placeholder="Escriba el precio">
 					</div>
-					<!-- STOCK -->
+					<!-- CANTIDAD -->
 					<div class="form-group">
 						<label for="stock" th:text="'Cantidad:'"></label> <input
-							th:field="*{cantidad}" id="cantidad" type="text"
-							class="form-control" placeholder="Escriba el stock">
+							name="cantidad" id="cantidad" type="text" th:value="${producto.cantidad}"
+							required autocomplete="off" class="form-control" placeholder="Escriba el stock">
 					</div>
 					<!-- IMAGEN -->
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="img" th:text="Imagen:"></label>
+						<label class="control-label col-sm-2" for="img">Imagen:</label>
 						<div class="col-sm-10">
 							<input type="file" class="form-control-file" id="img" name="img">
 						</div>
 					</div>
-					<!-- CATEGORIA Y ESTADO-->
-					<div class="form-group row">
-						<div class="col">
-							<label for="categoria" th:text="'Categor&iacute;a:'"></label> <select
-								th:field="*{categoria}" id="tipo" class="form-control">
-								<option th:each="categoria:${categoria}"
-									th:value="${categoria.id}" th:text="${categoria.nombre}" />
-							</select>
-						</div>
-						<div class="col">
-							<label for="tipo" th:text="'Estado:'"></label> <select
-								th:field="*{estado}" id="estado" class="form-control">
-								<option th:each="estado:${estado}" th:value="${estado.id}"
-									th:text="${estado.nombre}" />
-							</select>
-						</div>
-					</div>
-					
+
 					<div class="card-footer bg-dark">
 						<input type="submit" class="btn btn-success" value="Guardar" />
 					</div>

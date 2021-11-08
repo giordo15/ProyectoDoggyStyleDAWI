@@ -13,34 +13,34 @@ public class Usuario implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String nombre;
 	private String apellido;
 	private String direccion;
 	private String celular;
 	private String correo;
 	private String clave;
-	@ManyToOne
-	@JoinColumn(name = "tipo_id")
-	private Tipo tipo;
-	@ManyToOne
-	@JoinColumn(name = "estado_id")
-	private Estado estado;
+	private String tipo;
 	
 	@OneToMany(mappedBy = "usuario")
 	private List<Producto> productos;
 	
 	@OneToMany(mappedBy = "usuario")
 	private List<Orden> ordenes;
+
 	
-	
-	
+
 	public Usuario() {
-	}	
 	
-	public Usuario(int id, String nombre, String apellido, String direccion, String celular, String correo,
-			String clave, Tipo tipo, Estado estado) {
-		super();
+	}
+
+
+
+
+
+	public Usuario(Integer id, String nombre, String apellido, String direccion, String celular, String correo,
+			String clave, String tipo) {
+		
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -49,109 +49,144 @@ public class Usuario implements Serializable{
 		this.correo = correo;
 		this.clave = clave;
 		this.tipo = tipo;
-		this.estado = estado;
 	}
 
 
 
-	public int getId() {
+
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
 
 	public String getNombre() {
 		return nombre;
 	}
 
+
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+
 
 	public String getApellido() {
 		return apellido;
 	}
 
+
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
+
 
 	public String getDireccion() {
 		return direccion;
 	}
 
+
+
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+
+
 
 	public String getCelular() {
 		return celular;
 	}
 
+
+
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
+
+
 
 	public String getCorreo() {
 		return correo;
 	}
 
+
+
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
+
+
 
 	public String getClave() {
 		return clave;
 	}
 
+
+
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
 
-	public Tipo getTipo() {
+
+
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(Tipo tipo) {
+
+
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 
-	public Estado getEstado() {
-		return estado;
-	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}	
 
 	public List<Producto> getProductos() {
 		return productos;
 	}
+
+
+
 	public void setProductos(List<Producto> productos) {
 		this.productos = productos;
 	}
-	
-	
+
+
+
 	public List<Orden> getOrdenes() {
 		return ordenes;
 	}
+
+
+
 	public void setOrdenes(List<Orden> ordenes) {
 		this.ordenes = ordenes;
 	}
-	
-	
+
+
+
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
-				+ ", celular=" + celular + ", correo=" + correo + ", clave=" + clave + ", tipo=" + tipo + ", estado="
-				+ estado + "]";
+				+ ", celular=" + celular + ", correo=" + correo + ", clave=" + clave + ", tipo=" + tipo + "]";
 	}
 
+
+
+	
+	
+	
+	
+	
 	
 }

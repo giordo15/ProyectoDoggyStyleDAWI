@@ -13,10 +13,10 @@
 				<li class="breadcrumb-item active" aria-current="page"
 					th:text="'Usuarios'"></li>
 			</ol>
-		</nav>	
+		</nav>
 	</div>
 	<div class="container col-lg-8">
-	<h1 th:text="${titulo}"></h1>
+		<h1 th:text="${titulo}"></h1>
 		<a class="btn btn-success" th:href="@{/usuarios/create}"
 			th:text="'Nuevo Registro'" title="Crear Nuevo Registro"></a>
 	</div>
@@ -33,7 +33,7 @@
 					<th scope="col" th:text="Correo"></th>
 					<th scope="col" th:text="Clave"></th>
 					<th scope="col" th:text="Tipo"></th>
-					<th scope="col" th:text="Estado"></th>
+
 					<th scope="col" th:text="Acciones"></th>
 				</tr>
 			</thead>
@@ -46,11 +46,9 @@
 					<td th:text="${usuario.celular}"></td>
 					<td th:text="${usuario.correo}"></td>
 					<td th:text="${usuario.clave}"></td>
-					<td th:text="${usuario.tipo.nombre}"></td>
-					<td th:text="${usuario.estado.nombre}"></td>
+					<td th:text="${usuario.tipo}"></td>
 					<td><a class="badge badge-warning badge-sm" th:text="Editar"
-						title="Editar Registro"
-						th:href="@{/usuarios/edit/}+${usuario.id}"></a>
+						title="Editar Registro" th:href="@{/usuarios/edit/}+${usuario.id}"></a>
 						<a class="badge badge-danger badge-sm" th:text="'Eliminar'"
 						title="Eliminar Registro"
 						th:href="@{/usuarios/delete/}+${usuario.id}"></a></td>

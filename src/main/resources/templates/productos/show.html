@@ -29,8 +29,6 @@
 					<th scope="col" th:text="'Nombre'"></th>
 					<th scope="col" th:text="'Precio'"></th>
 					<th scope="col" th:text="'Cantidad'"></th>
-					<th scope="col" th:text="'Categor&iacute;a'"></th>
-					<th scope="col" th:text="'Estado'"></th>
 					<th scope="col" th:text="'Acciones'"></th>
 				</tr>
 			</thead>
@@ -40,14 +38,12 @@
 					<td th:text="${producto.nombre}"></td>
 					<td th:text="${producto.precio}"></td>
 					<td th:text="${producto.cantidad}"></td>
-					<td th:text="${producto.categoria.nombre}"></td>
-					<td th:text="${producto.estado.nombre}"></td>
 					<td><a class="badge badge-warning badge-sm" th:text="'Editar'"
 						title="Editar Registro"
-						th:href="@{/productos/edit/}+${producto.id}"></a>
+						th:href="@{productos/edit/{id} (id=${producto.id}) }"></a>
 						<a class="badge badge-danger badge-sm" th:text="'Eliminar'"
 						title="Eliminar Registro"
-						th:href="@{/productos/delete/}+${producto.id}"></a></td>
+						th:href="@{productos/delete/{id} (id=${producto.id}) }"></a></td>
 				</tr>
 			</tbody>
 		</table>

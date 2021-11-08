@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- FORMULARIO PRODUCTO -->
+<html lang="es" xmlns:th="http://thymeleaf.org">
+<head th:replace="administrador/template_admin :: head">
+</head>
+<body>
+	<header th:replace="administrador/template_admin :: header"></header>
+	<div class="container col-lg-8">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/administrador}"
+					th:text="'Inicio'"></a></li>
+				<li class="breadcrumb-item"><a th:href="@{/productos}"
+					th:text="'Productos'"></a></li>
+				<li class="breadcrumb-item active" aria-current="page"
+					th:text="${titulo}"></li>
+			</ol>
+		</nav>
+		<div class="card bg-ligth">
+			<div class="card-header bg-dark h3 mb-2 text-white text-center"
+				th:text="${titulo}"></div>
+			<div class="card-body">
+				<!-- FORMULARIO -->
+				<form th:action="@{/productos/save}" method="post"
+					enctype="multipart/form-data">
+					<!-- ID -->
+
+					<input id="id" name="id" type="hidden" class="form-control"
+						placeholder="Escriba su id">
+
+					<!-- NOMBRE-->
+					<div class="form-group">
+						<label for="nombres" th:text="'Nombre:'"></label> <input
+							id="nombres" name="nombre" type="text" class="form-control"
+							placeholder="Escriba el nombre">
+					</div>
+					<!-- PRECIO -->
+					<div class="form-group">
+						<label for="precio" th:text="'Precio:'"></label> <input
+							id="precio" name="precio" type="text" class="form-control"
+							placeholder="Escriba el precio">
+					</div>
+					<!-- CANTIDAD -->
+					<div class="form-group">
+						<label for="stock" th:text="'Cantidad:'"></label> <input
+							id="cantidad" name="cantidad" type="text" class="form-control"
+							placeholder="Escriba el stock">
+					</div>
+					<!-- IMAGEN -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="img">Imagen:</label>
+						<div class="col-sm-10">
+							<input type="file" class="form-control-file" id="img" name="img">
+						</div>
+					</div>
+					<input type="submit" class="btn btn-success" value="Guardar" />
+				</form>
+				<!-- End of FORMULARIO -->
+			</div>
+			<!-- End of CARDBODY -->
+		</div>
+		<!-- End of CARD -->
+	</div>
+	<!-- End of CONTAINER -->
+	<!-- Footer -->
+	<footer th:replace="administrador/template_admin :: footer"> </footer>
+</body>
+</html>

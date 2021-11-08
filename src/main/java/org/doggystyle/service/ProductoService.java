@@ -12,7 +12,7 @@ public interface ProductoService {
 	public List<Producto> findAll();
 	public Producto save (Producto producto);
 	public Optional<Producto>get(int id);
-	public int update(Producto p);
+	public void update(Producto producto);
 	public void delete(int id);
 	
 	

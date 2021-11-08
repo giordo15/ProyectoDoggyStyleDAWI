@@ -37,6 +37,7 @@ public class Usuario implements Serializable{
 	
 	public Usuario() {
 	}	
+	
 	public Usuario(int id, String nombre, String apellido, String direccion, String celular, String correo,
 			String clave, Tipo tipo, Estado estado) {
 		super();

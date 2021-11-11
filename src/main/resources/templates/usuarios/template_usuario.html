@@ -10,8 +10,8 @@
 	<header th:fragment="header" class="sticky-top">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
-				<a class="navbar-brand" href="#"> <img src="/images/logo.png"
-					width="80" height="50" alt="">
+				<a class="navbar-brand" th:href="@{/usuarios/}"> <img
+					src="/images/logo.png" width="80" height="50" alt="">
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent"
@@ -19,24 +19,22 @@
 					aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-
-				<form class="form-inline my-2 my-lg-0" method="post" action="#">
-					<input class="form-control mr-sm-2" type="search"
-						placeholder="Buscar" aria-label="Search" name="nombre"
-						autocomplete="off">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-				</form>
-
-
-				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
-						<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+				<!-- CONTROLADORES ADMINISTRADOR -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
+					<li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
+						
 					</ul>
+					<form class="form-inline my-2 my-lg-0">
+					
+						<input class="form-control mr-sm-2" type="search"
+							placeholder="Buscar" aria-label="Search">
+						<a class="btn btn-outline-success my-2 my-sm-0" type="submit" th:text="'Iniciar Sesion'" th:href="@{/login}"></a>
+					</form>
 				</div>
 			</div>
 		</nav>
-
 	</header>
 
 	<!-- CONTENIDO -->
@@ -54,7 +52,7 @@
 			</div>
 		</div>
 
-		<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
 		<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
 		<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 

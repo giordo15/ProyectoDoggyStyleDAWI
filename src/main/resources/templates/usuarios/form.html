@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!-- FORMULARIO USUARIO -->
 <html lang="es" xmlns:th="http://thymeleaf.org">
-<head th:replace="usuarios/template_admin :: head">
+<head th:replace="administrador/template_admin :: head">
 </head>
 <body>
-	<header th:replace="usuarios/template_admin :: header"></header>
+	<header th:replace="administrador/template_admin :: header"></header>
 	<div class="container col-lg-8">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
@@ -21,7 +21,7 @@
 				th:text="${titulo}"></div>
 			<div class="card-body">
 				<!-- FORMULARIO -->
-				<form th:action="@{/views/usuarios/guardar}" th:object=${usuario}
+				<form th:action="@{/usuarios/save}" th:object=${usuario}
 					method="post">
 					<!-- ID -->
 					
@@ -62,13 +62,13 @@
 					<!-- CLAVE -->
 					<div class="form-group">
 						<label for="clave" th:text="'Clave:'"></label> <input
-							th:field="*{clave}" id="clave" type="password"
+							th:field="*{clave}" id="clave" type="text"
 							class="form-control" placeholder="Escriba la clave">
 					</div>
 					<!-- TIPO-->
 					<div class="form-group">
 						<label for="clave" th:text="'Tipo:'"></label> <input
-							th:field="*{tipo}" id="clave" type="password"
+							th:field="*{tipo}" id="clave" type="text"
 							class="form-control" placeholder="Escriba el tipo">
 					</div>
 					
@@ -85,6 +85,6 @@
 	
 	<!-- End of CONTAINER -->
 	<!-- Footer -->
-	<footer th:replace="usuarios/template_admin :: footer"> </footer>
+	<footer th:replace="administrador/template_admin :: footer"> </footer>
 </body>
 </html>

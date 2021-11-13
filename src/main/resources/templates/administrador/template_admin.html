@@ -20,9 +20,8 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 					<!-- CONTROLADORES ADMINISTRADOR -->
-					<div class="collapse navbar-collapse" id="navbarResponsive">
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
 							<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -34,9 +33,13 @@
 								<a class="dropdown-item" th:href="@{/mascotas}" th:text="'Mascotas'"></a>
 								<a class="dropdown-item" th:href="@{/compras}" th:text="'Compras'"></a>
 								<a class="dropdown-item" th:href="@{/acerca_del_proyecto}" th:text="'Acerca del Proyecto'"></a>
-							</div></li>
-							<li class="nav-item"><a class="nav-link" href="login.html" th:text="'Cerrar Sesion'"></a></li>
+							</div>
 						</ul>
+						<form class="form-inline my-2 my-lg-0">
+					
+						
+						<a class="btn btn-info my-2 my-sm-0" type="submit" th:text="'Cerrar Sesion'" th:href="@{/login}"></a>
+					</form>
 					</div>
 
 				</div>

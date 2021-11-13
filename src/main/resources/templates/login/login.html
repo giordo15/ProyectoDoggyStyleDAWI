@@ -6,32 +6,41 @@
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
-	<!-- BARRA DE NAVEGACION -->
-	<header th:fragment="header" class="sticky-top">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			
-			
-		</nav>
-<div class="container">
-
-    <div class="card mb-3">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h2>Ingresar</h2>
-
-          </div>
-        </div>
-      </div>
-    </div></div>
-
-
-	</header>
 
 	<!-- CONTENIDO -->
-	<div class="container"></div>
+	<div class="container col-lg-4">
+	
+		<div class="card bg-ligth">
+		<span class="border border-primary"></span>
+			<div class="card-body">
+			<h2 class="text-center">Ingresar</h2>
+				<form action="#" method="post">
+					<div class="form-group">
+						<label for="email"> Email: </label> <input type="email"
+							class="form-control" id="email" name="email"
+							placeholder="Ingrese su email" required autocomplete="off">
+
+					</div>
+
+					<div class="form-group">
+						<label for="pwd"> Contraseña:</label> <input type="password"
+							class="form-control" id="password" name="password"
+							placeholder="Ingrese su contraseña" required>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-2">
+							<button type="submit" class="btn btn-dark">
+								<span class="glyphicon glyphicon-ok"></span> Ingresar
+							</button>
+						</div>
+					</div>
+				</form>
+				<a href="registro.html" class="card-link">Si aún no tiene cuenta
+					aqui puede registrarse</a>
+			</div>
+		</div>
+	</div>
 
 
 	<!-- PIE DE PAGINA -->
@@ -48,7 +57,7 @@
 		<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
 		<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
 		<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
-		
+
 
 	</footer>
 

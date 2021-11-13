@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- HOME ADMINISTRADOR -->
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="administrador/template_admin :: head">
 </head>
@@ -26,7 +27,7 @@
 						<p class="card-text" th:text="${producto.nombre}"></p>
 					</div>
 					<div class="card-footer">
-						<a href="productohome.html" class="btn btn-success">Ver
+						<a th:href="@{/productohome/{id} (id=${producto.id})}" class="btn btn-success">Ver
 							producto</a>
 					</div>
 				</div>

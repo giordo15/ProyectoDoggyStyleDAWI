@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="clientes/template_cliente :: head">
+</head>
+<body>
+	<header th:replace="clientes/template_cliente :: header"></header>
+	<!-- Page Content -->
+	<div class="container">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a th:href="@{/home}"
+				th:text="'Inicio'"></a></li>
+			<li class="breadcrumb-item active" aria-current="page"
+				th:text="'Carrito'"></li>
+		</ol>
+
+		<!-- Blog Post -->
+		<div class="card mb-4">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-lg-9">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col" th:text="'Producto'"></th>
+									<th scope="col" th:text="'Precio'"></th>
+									<th scope="col" th:text="'Cantidad'"></th>
+									<th scope="col" th:text="'Total'"></th>
+									<th scope="col" th:text="'Acciones'"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="dorden:${cart}">
+									<td th:text="${dorden.nombre}"></td>
+									<td th:text="${dorden.precio}"></td>
+									<td th:text="${dorden.cantidad}"></td>
+									<td th:text="${dorden.total}"></td>
+									<td><a href="#" class="btn btn-danger">Quitar</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="col-lg-3">
+						<h2 class="card-title">SUBTOTAL</h2>
+
+						<ul class="list-group">
+							<li class="list-group-item"><h5 th:text="${orden.total}"></h5></li>
+							<a href="resumenorden.html" class="btn btn-dark">Ver Orden</a>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="clientes/template_cliente :: footer"></footer>
+</body>
+</html>

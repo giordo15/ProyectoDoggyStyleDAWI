@@ -8,9 +8,9 @@
 <body>
 	<!-- BARRA DE NAVEGACION -->
 	<header th:fragment="header" class="sticky-top">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-info">
 			<div class="container">
-				<a class="navbar-brand" th:href="@{/usuarios/}"> <img
+				<a class="navbar-brand" th:href="@{/home}"> <img
 					src="/images/logo.png" width="80" height="50" alt="">
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -22,15 +22,15 @@
 				<!-- CONTROLADORES ADMINISTRADOR -->
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
-					<li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
-					<li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
+					<li class="nav-item"><a class="nav-link text-white" th:href="@{/home}">Inicio</a></li>
+					<li class="nav-item"><a class="nav-link text-white" th:href="@{/cart}">Carrito</a></li>
 						
 					</ul>
 					<form class="form-inline my-2 my-lg-0">
 					
 						<input class="form-control mr-sm-2" type="search"
 							placeholder="Buscar" aria-label="Search">
-						<a class="btn btn-outline-success my-2 my-sm-0" type="submit" th:text="'Iniciar Sesion'" th:href="@{/login}"></a>
+						<a class="btn btn-dark my-2 my-sm-0" type="submit" th:text="'Cerrar Sesion'" th:href="@{/login}"></a>
 					</form>
 				</div>
 			</div>

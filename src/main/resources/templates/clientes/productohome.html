@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="clientes/template_cliente :: head">
+</head>
+<body>
+	<header th:replace="clientes/template_cliente :: header"></header>
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a th:href="@{/home}"
+				th:text="'Inicio'"></a></li>
+			<li class="breadcrumb-item active" aria-current="page"
+				th:text="'Productos'"></li>
+		</ol>
+
+		<!-- Blog Post -->
+		<div class="card mb-4">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-lg-6">
+						<a href="#"> <img class="img-fluid rounded"
+							th:src="@{/images/{img} (img=${producto.imagen})}" alt="">
+						</a>
+					</div>
+					<div class="col-lg-6">
+						<form th:action="@{/cart}" method="POST">
+						<input type="hidden" th:value="${producto.id}" name="id">
+							<h2 class="card-title" th:text="${producto.nombre}"></h2>
+
+							<ul class="list-group">
+								<li class="list-group-item"><h5
+										th:text="'Precio: S/ ' + ${producto.precio}"></h5></li>
+								<li class="list-group-item">
+									<p>Descripción:</p>
+								</li>
+								<li class="list-group-item"><h6>
+										Cantidad: <input type="number" id="cantidad" name="cantidad"
+											autocomplete="off" min="1" max="5" value="1">
+									</h6></li>
+							</ul>
+
+
+							<button type="submit" class="btn btn-dark">Añadir al
+								carrito</button>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- /.container -->
+	<footer th:replace="clientes/template_cliente :: footer"></footer>
+</body>
+</html>

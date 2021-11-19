@@ -9,7 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.doggystyle.model.DetalleOrden;
 import org.doggystyle.model.Orden;
 import org.doggystyle.model.Producto;
+import org.doggystyle.model.Usuario;
 import org.doggystyle.service.ProductoService;
+import org.doggystyle.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,9 @@ public class ClienteController {
 
 	@Autowired
 	private ProductoService productoService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	List<DetalleOrden> detalles = new ArrayList<DetalleOrden>();
 
@@ -119,7 +124,18 @@ public class ClienteController {
 		return "/clientes/carrito";
 	}
 	
-	
+	@GetMapping("/order")
+	public String order(Model model) {
+		
+		Usuario usuario = usuarioService.findById(1).get();
+		
+		
+		model.addAttribute("cart", detalles);
+		model.addAttribute("orden", orden);
+		model.addAttribute("usuario", usuario);
+		
+		return "clientes/resumenorden";
+	}
 	
 	
 	

@@ -15,4 +15,6 @@ public interface UsuarioService {
 	public Optional<Usuario>get(int id);
 	public int update(Usuario u);
 	public void delete(int id);
+	
+	Optional<Usuario> findById(Integer id);
 }

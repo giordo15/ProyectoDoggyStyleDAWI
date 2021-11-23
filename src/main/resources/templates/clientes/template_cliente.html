@@ -26,12 +26,14 @@
 					<li class="nav-item"><a class="nav-link text-white" th:href="@{/getCart}">Carrito</a></li>
 						
 					</ul>
-					<form class="form-inline my-2 my-lg-0">
-					
+					<form class="form-inline my-2 my-lg-0" method="post" th:action="@{/search}">					
 						<input class="form-control mr-sm-2" type="search"
-							placeholder="Buscar" aria-label="Search">
-						<a class="btn btn-dark my-2 my-sm-0" type="submit" th:text="'Cerrar Sesion'" th:href="@{/login}"></a>
+							placeholder="Buscar" aria-label="Search" name="nombre" 
+							autocomplete="off">
+						<button class="btn btn-dark my-2 my-sm-0" type="submit" th:text="'Buscar'"></button>
+						
 					</form>
+					<a class="btn btn-alert my-2 my-sm-0" type="submit" th:text="'Cerrar Sesion'" th:href="@{/login}"></a>
 				</div>
 			</div>
 		</nav>

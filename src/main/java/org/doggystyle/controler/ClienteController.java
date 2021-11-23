@@ -1,6 +1,7 @@
 package org.doggystyle.controler;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,8 @@ import org.doggystyle.model.DetalleOrden;
 import org.doggystyle.model.Orden;
 import org.doggystyle.model.Producto;
 import org.doggystyle.model.Usuario;
+import org.doggystyle.service.DetalleOrdenService;
+import org.doggystyle.service.OrdenService;
 import org.doggystyle.service.ProductoService;
 import org.doggystyle.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +32,15 @@ public class ClienteController {
 
 	@Autowired
 	private ProductoService productoService;
-	
+
 	@Autowired
 	private UsuarioService usuarioService;
+
+	@Autowired
+	private OrdenService ordenService;
+
+	@Autowired
+	private DetalleOrdenService detalleOrdenService;
 
 	List<DetalleOrden> detalles = new ArrayList<DetalleOrden>();
 
@@ -115,34 +124,50 @@ public class ClienteController {
 
 		return "clientes/carrito";
 	}
-	
-	
+
 	@GetMapping("/getCart")
 	public String getCart(Model model) {
 		model.addAttribute("cart", detalles);
 		model.addAttribute("orden", orden);
 		return "/clientes/carrito";
 	}
-	
+
 	@GetMapping("/order")
 	public String order(Model model) {
-		
+
 		Usuario usuario = usuarioService.findById(1).get();
-		
-		
+
 		model.addAttribute("cart", detalles);
 		model.addAttribute("orden", orden);
 		model.addAttribute("usuario", usuario);
-		
+
 		return "clientes/resumenorden";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	// guardar la orden
+	@GetMapping("/saveOrder")
+	public String saveOrder(Model model) {
+
+		Date fechaCreacion = new Date();
+		orden.setFechaCreacion(fechaCreacion);
+		orden.setNumero(ordenService.generarNumeroOrden());
+
+		// usuario
+
+		Usuario usuario = usuarioService.findById(1).get();
+
+		orden.setUsuario(usuario);
+		ordenService.save(orden);
+
+		for (DetalleOrden dt : detalles) {
+			dt.setOrden(orden);
+			detalleOrdenService.save(dt);
+		}
+
+		// limpieza de lista y orden
+		orden = new Orden();
+		detalles.clear();
+
+		return "redirect:/home";
+	}
 }

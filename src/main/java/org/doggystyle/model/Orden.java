@@ -1,6 +1,6 @@
 package org.doggystyle.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -76,8 +76,6 @@ public class Orden {
 		this.total = total;
 	}
 	
-	
-
 	public Usuario getUsuario() {
 		return usuario;
 	}
